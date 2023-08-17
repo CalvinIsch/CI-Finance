@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script>
+        // List of your links
+        var links = [
+            "https://google.com",
+            "https://bing.com",
+            "https://sil.asc.upenn.edu/openci-fs/signup/direct-to-play/time/17:20",
+            "https://youtube.com"
+            // Add more links here
+        ];
+
+        // Get the visitor's index from local storage
+        var visitorIndex = localStorage.getItem("visitorIndex");
+        
+        if (visitorIndex === null) {
+            // If visitorIndex is not set, start from the first link
+            visitorIndex = 0;
+        } else {
+            // Increment visitorIndex for the next link
+            visitorIndex = (parseInt(visitorIndex) + 1) % links.length;
+        }
+        
+        // Store the updated visitorIndex in local storage
+        localStorage.setItem("visitorIndex", visitorIndex);
+
+        // Redirect the visitor to the appropriate link
+        window.location.href = links[visitorIndex];
+    </script>
+</head>
+<body>
+    <p>If you are not automatically redirected, <a href="#">click here</a>.</p>
+</body>
+</html>
